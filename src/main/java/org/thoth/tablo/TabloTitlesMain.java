@@ -17,7 +17,7 @@ public class TabloTitlesMain {
     public static void main(String[] args) throws Exception {
      
         String DB_URL 
-            = "jdbc:sqlite:D:/Desktop/db/Tablo.db";
+            = "jdbc:sqlite:D:/Documents/Databases/SQLite/tablo/Tablo.db";
         Connection conn
             = DriverManager.getConnection(DB_URL);
         PreparedStatement stmt

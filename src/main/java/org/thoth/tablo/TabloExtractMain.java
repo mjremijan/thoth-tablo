@@ -23,7 +23,7 @@ public class TabloExtractMain {
     public static void main(String[] args) throws Exception {
      
         String DB_URL 
-            = "jdbc:sqlite:D:/Desktop/db/Tablo.db";
+            = "jdbc:sqlite:D:/Documents/Databases/SQLite/tablo/Tablo.db";
         Connection conn
             = DriverManager.getConnection(DB_URL);
         PreparedStatement stmt
@@ -35,7 +35,7 @@ public class TabloExtractMain {
                     + "AND \"objectType\" = 'recEpisode' "
                     + "AND \"actualDurationInSeconds\" > 0 ORDER BY id"
             );
-        stmt.setString(1, "The Masked Singer");
+        stmt.setString(1, "Extracted");
         ResultSet rs
             = stmt.executeQuery();
         
@@ -127,7 +127,7 @@ public class TabloExtractMain {
         
         // save to temporary file
         Path tsListPath = Files.createTempFile("tsfiles-", ".tmp");
-        //tsListPath.toFile().deleteOnExit();
+        tsListPath.toFile().deleteOnExit();
         Files.writeString(tsListPath, str);        
 
         
