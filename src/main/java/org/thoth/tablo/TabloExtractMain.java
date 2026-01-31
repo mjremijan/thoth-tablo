@@ -35,7 +35,7 @@ public class TabloExtractMain {
                     + "AND \"objectType\" = 'recEpisode' "
                     + "AND \"actualDurationInSeconds\" > 0 ORDER BY id"
             );
-        stmt.setString(1, "Extracted");
+        stmt.setString(1, "FBI");
         ResultSet rs
             = stmt.executeQuery();
         
@@ -58,6 +58,12 @@ public class TabloExtractMain {
     } 
     
     private static void makeMp4(Path recordingPath, Path tsListPath, Path episodeFilePath) throws Exception {
+        
+        if (Files.exists(episodeFilePath)) {
+            System.out.printf("Skipping...file exists.%n");
+            return;
+        }
+        
         // ffmpeg execution
         // ffmpeg -f concat -safe 0 -i list.txt -c copy output.mp4
         System.out.printf("- Generating mp4...%n");
